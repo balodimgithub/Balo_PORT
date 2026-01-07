@@ -6,8 +6,10 @@ import DashRefineImage from "../../public/DashRefineImage.jpeg";
 import BrainWave from "../../public/BrainWave.png";
 import TruckingMgt from "../../public/TruckingMgt.jpeg";
 import MarketPadi from "../../public/MarketPadi.jpeg"
-
+import Aora from "../../public/AoraReact.jpeg";
 import  AremxyPlugLogo from "../../public/AremxyPlugLogo.jpeg";
+import GitIcon from "../../public/Git.svg";
+import NFTIcon from "../../public/NFT.jpeg"
 /**
  * Stable Framer Motion setup for Next.js App Router
  * No profile image in hero – text-first positioning
@@ -63,33 +65,33 @@ const projects = [
     image: DashRefineImage,
     gitHubLink : "https://github.com/balodimgithub/Dashboard_with_Refine",
     userInterface : "https://dashrefine.netlify.app/",
-    tools: ["React", "TypeScipt", "GraphQL", "Node.js", "eslint", "netlify", "vite"],
+    tools: ["React", "Refine Framework", "TypeScipt", "GraphQL", "Node.js", "eslint", "netlify", "vite"],
     problem:
       "The use of Refine framework to build a dashboard, charts and kanban that helps organisation assign and track employees tasks progress across departments including companies in collaborations within a timeframe.",
   },
   {
     name: "NFT MarketPlace",
-    image: "/projects/marketpadi.jpg",
-    githubLink : "https://github.com/balodimgithub/NFT_APP",
+    image: NFTIcon ,
+    gitHubLink : "https://github.com/balodimgithub/NFT_APP",
     userInterface : "",
-    tools: ["React Native", "Tailwind", "Node.js", "Expo"],
+    tools: ["React Native", "Typescript", "Tailwind", "Node.js", "Expo"],
     problem:
       "Creating means for sellers with Non-fungible Tokens (NFTs) to reach wider audiences and facilitate trustful transactions.",
   },
 
   {
     name: "Flair-React Native",
-    image: "/projects/campusconnect.jpg",
-     githubLink : "https://github.com/balodimgithub/Flair-React-Native-Application",
+    image: Aora,
+     gitHubLink : "https://github.com/balodimgithub/Flair-React-Native-Application",
     userInterface : "",
-    tools: ["React Native", "Expo", "AppWrite(Storage and Database)","Tailwind"],
+    tools: ["React Native", "Expo", "Typescript", "AppWrite(Storage and Database)","Tailwind"],
     problem:
       "This is an app used to create and share multimedias with friends and family members.",
   },
    {
     name: "BrainWave Landing Page",
     image: BrainWave,
-     githubLink : "https://github.com/balodimgithub/MODERN_AI_APP",
+     gitHubLink : "https://github.com/balodimgithub/MODERN_AI_APP",
     userInterface : "https://modern-ai-user-interface.netlify.app/",
     tools: ["React", "vite","Tailwind", "netlify"],
     problem:
@@ -98,7 +100,7 @@ const projects = [
   {
     name: "Onye ji cashie",
     image: TruckingMgt,
-     githubLink : "https://github.com/balodimgithub/Onye_ji_cashie",
+     gitHubLink : "https://github.com/balodimgithub/Onye_ji_cashie",
     userInterface : "https://baloonyejicashie.netlify.app/",
     tools: ["React", ,"Tailwind", "Nodejs", "netlify"],
     problem:
@@ -106,8 +108,8 @@ const projects = [
   }
 ];
 
-export default function HomePage() {
- 
+export default function Profile() {
+   
   return (
     <LazyMotion features={domAnimation}>
       <main className="relative min-h-screen bg-black text-gray-100 overflow-hidden">
@@ -204,7 +206,20 @@ export default function HomePage() {
                         {tool}
                       </span>
                     ))}
-                  </div>
+                 
+                  <a href={project.gitHubLink}>
+                      <Image src={GitIcon}   className={"text-xs px-3 py-1 rounded-full border border-green-400/30 text-green-300"}
+                      width={50} height={50}  alt="Code Icon"
+              />
+              </a>  
+               {project.userInterface?.length > 1 && (
+              <a href={project.userInterface} className={"text-xs px-3 flex py-1 align-self justify-self rounded-full border border-green-400/30 text-green-300"}>
+                User Interface
+              </a>
+               )}
+              </div>
+          
+           
                 </div>
 
                 {/* Glow hover */}

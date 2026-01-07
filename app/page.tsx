@@ -3,12 +3,7 @@
 import Image from "next/image";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Profile from "../public/Profile.jpeg"
-/**
- * HomePage with hero section:
- * - Profile picture on right
- * - Software Engineer header + description on left
- * - Smooth mouse motion and hover animations
- */
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -49,7 +44,7 @@ export default function HomePage() {
               <a href="/Profile" className="px-6 py-3 rounded-full bg-green-400 text-black font-medium hover:bg-green-300 transition">
                 View Projects
               </a>
-              <a href="/Contact" className="px-6 py-3 rounded-full border border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition">
+              <a href="/ContactMe" className="px-6 py-3 rounded-full border border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition">
                 Contact Me
               </a>
             </m.div>
@@ -71,11 +66,11 @@ export default function HomePage() {
         </section>
 
         {/* Scroll indicator */}
-        <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        {/* <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <m.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'linear' }} className="w-6 h-10 rounded-full border border-green-400 flex justify-center pt-2">
             <span className="w-1 h-2 bg-green-400 rounded-full" />
           </m.div>
-        </m.div>
+        </m.div> */}
       </main>
     </LazyMotion>
   );
