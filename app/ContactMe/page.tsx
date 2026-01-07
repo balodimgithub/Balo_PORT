@@ -1,16 +1,12 @@
 "use client";
-
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { useState, useRef } from "react";
-import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+import { LazyMotion, domAnimation, motion as m } from "framer-motion";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email : "", phone : "", message: '' });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
+ 
  
 
 
@@ -20,12 +16,13 @@ export default function ContactPage() {
 const formRef = useRef<HTMLFormElement | null>(null);
   //Form Function
   const sendDetails = async (e: React.FormEvent) => {
-    alert("Sent Successfully")
     e.preventDefault();
-
-    if (!formRef.current) return;
+    console.log(formRef.current);
+if (!formRef.current) return;
 
     try {
+      alert("Sent Successfully")
+      console.log(formRef.current)
       await emailjs.sendForm(
        serviceValue,
        templateInfo,
@@ -42,13 +39,11 @@ const formRef = useRef<HTMLFormElement | null>(null);
   }
 
    const handleSubmit = async(e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Message sent!\nName: ${form.name}\nPurpose: ${form.message}`);
-    setForm({ name: '', email : "", phone : "", message: '' });
-    if(form?.name?.length > 1 && form?.email?.length > 1 && form?.phone?.length > 1 && form?.message?.length > 1){
+   e.preventDefault();
+    // alert(`Message sent!\nName: ${form.name}\nPurpose: ${form.message}`);
+    // setForm({ name: '', email : "", phone : "", message: '' });
     await sendDetails(e)
-    }
-  };
+    };
   return (
     <LazyMotion features={domAnimation}>
       <main className="min-h-screen bg-black text-gray-100 flex flex-col items-center justify-center px-6 py-24">
@@ -90,6 +85,7 @@ const formRef = useRef<HTMLFormElement | null>(null);
 
         {/* Contact Form */}
         <m.form
+        ref={formRef}
           onSubmit={handleSubmit}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -99,8 +95,6 @@ const formRef = useRef<HTMLFormElement | null>(null);
           <input
             type="text"
             name="name"
-            value={form.name}
-            onChange={handleChange}
             placeholder="Your Name"
             required
             className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
@@ -108,8 +102,6 @@ const formRef = useRef<HTMLFormElement | null>(null);
  <input
             type="text"
             name="email"
-            value={form.email}
-            onChange={handleChange}
             placeholder="example@email.com"
             required
             className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
@@ -122,9 +114,7 @@ const formRef = useRef<HTMLFormElement | null>(null);
             e.currentTarget.value = phoneSchema
             }}
             name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="XXX XXXX XXXX"
+            placeholder="Your Phone Number"
             required 
             maxLength={11}
             className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
@@ -132,9 +122,7 @@ const formRef = useRef<HTMLFormElement | null>(null);
 
           <textarea
             name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Purpose / Message"
+            placeholder="Purpose / Work Request"
             required
             rows={5}
             className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400 resize-none"
