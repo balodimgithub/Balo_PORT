@@ -72,7 +72,8 @@ if (!formRef.current) return;
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex gap-6 mb-12"
         >
-          <a href="www.linkedin.com/in/oladimeji-balogun-ab730729b" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
+          <a href="https://www.linkedin.com/in/oladimeji-balogun-ab730729b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
+          target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
             LinkedIn
           </a>
           <a href="https://x.com/balodim1?s=11" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
