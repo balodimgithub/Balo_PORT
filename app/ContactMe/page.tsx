@@ -1,21 +1,54 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', message: '' });
+  const [form, setForm] = useState({ name: '', email : "", phone : "", message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+ 
+
+
+  const serviceValue = "service_x3wfno4";
+  const templateInfo = "template_fwxa4ug";
+  const publicKey = "aKYDGi7Xo_3idUb3r"
+const formRef = useRef<HTMLFormElement | null>(null);
+  //Form Function
+  const sendDetails = async (e: React.FormEvent) => {
+    alert("Sent Successfully")
+    e.preventDefault();
+
+    if (!formRef.current) return;
+
+    try {
+      await emailjs.sendForm(
+       serviceValue,
+       templateInfo,
+        formRef.current,
+        publicKey
+      );
+
+      alert("Message sent successfully!");
+      formRef.current.reset();
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message.");
+    }
+  }
+
+   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     alert(`Message sent!\nName: ${form.name}\nPurpose: ${form.message}`);
-    setForm({ name: '', message: '' });
+    setForm({ name: '', email : "", phone : "", message: '' });
+    if(form?.name?.length > 1 && form?.email?.length > 1 && form?.phone?.length > 1 && form?.message?.length > 1){
+    await sendDetails(e)
+    }
   };
-
   return (
     <LazyMotion features={domAnimation}>
       <main className="min-h-screen bg-black text-gray-100 flex flex-col items-center justify-center px-6 py-24">
@@ -70,6 +103,30 @@ export default function ContactPage() {
             onChange={handleChange}
             placeholder="Your Name"
             required
+            className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
+          />
+ <input
+            type="text"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="example@email.com"
+            required
+            className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
+          />
+           <input
+            type="tel"
+            onInput={(e)=> {
+            const phone = e.currentTarget.value;
+            const phoneSchema = phone.replace(/\D/g, "");
+            e.currentTarget.value = phoneSchema
+            }}
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+            placeholder="XXX XXXX XXXX"
+            required 
+            maxLength={11}
             className="px-4 py-3 rounded-lg bg-black border border-green-400/40 text-gray-100 focus:outline-none focus:border-green-400"
           />
 

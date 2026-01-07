@@ -10,6 +10,8 @@ import Aora from "../../public/AoraReact.jpeg";
 import  AremxyPlugLogo from "../../public/AremxyPlugLogo.jpeg";
 import GitIcon from "../../public/Git.svg";
 import NFTIcon from "../../public/NFT.jpeg"
+import QoutientRentIcon from "../../public/QuotientRent.jpeg"
+import ChatGPTRent from "../../public/ChatGPTLandingPage.png"
 /**
  * Stable Framer Motion setup for Next.js App Router
  * No profile image in hero – text-first positioning
@@ -32,33 +34,7 @@ const stagger = {
 
 // Project data (replace images + content as needed)
 const projects = [
-   {
-    name: "MarketPadi",
-    image: MarketPadi,
-    gitHubLink : "/",
-    userInterface : "/",
-    tools: ["React", "Next.js", "TypeScipt", , "Node.js", "eslint", "Vercel"],
-    problem:
-      "Market for Producers and clients",
-  },
-   {
-    name: "AremxyPlug Customer Dashboard",
-    image: AremxyPlugLogo,
-    gitHubLink : "/",
-    userInterface : "/",
-    tools: ["React" , "Javascript","Node.js", "eslint", "REST API","Managing third party service", "Dependencies"],
-    problem:
-      "I managed a team to help build a digital and Telecommunication solutions for users",
-  },
-    {
-    name: "AremxyPlug Admin Dashboard",
-    image: AremxyPlugLogo,
-    gitHubLink : "/",
-    userInterface : "/",
-    tools: ["React", "Javascript","Node.js", "eslint", "RestAPI"],
-    problem:
-      "Admin dashboard to help track user's activity acting as a backend for the customer design dashboard.",
-  },
+  
 
     {
     name: "Dashboard_with_Refine",
@@ -69,6 +45,7 @@ const projects = [
     problem:
       "The use of Refine framework to build a dashboard, charts and kanban that helps organisation assign and track employees tasks progress across departments including companies in collaborations within a timeframe.",
   },
+
   {
     name: "NFT MarketPlace",
     image: NFTIcon ,
@@ -96,6 +73,51 @@ const projects = [
     tools: ["React", "vite","Tailwind", "netlify"],
     problem:
       "Beautiful and responsive AI landing page",
+  },
+   {
+    name: "MarketPadi",
+    image: MarketPadi,
+    gitHubLink : "/",
+    userInterface : "/",
+    tools: ["React", "Next.js", "TypeScipt", , "Node.js", "eslint", "Vercel"],
+    problem:
+      "Market for Producers and clients",
+  },
+   {
+    name: "AremxyPlug Customer Dashboard",
+    image: AremxyPlugLogo,
+    gitHubLink : "/",
+    userInterface : "/",
+    tools: ["React" , "Javascript","Node.js", "eslint", "REST API","Managing third party service", "Dependencies"],
+    problem:
+      "I managed a team to help build a digital and Telecommunication solutions for users",
+  },
+    {
+    name: "AremxyPlug Admin Dashboard",
+    image: AremxyPlugLogo,
+    gitHubLink : "/",
+    userInterface : "/",
+    tools: ["React", "Javascript","Node.js", "eslint", "RestAPI"],
+    problem:
+      "Admin dashboard to help track user's activity acting as a backend for the customer design dashboard.",
+  },
+    {
+    name: "QuotientRent",
+    image: QoutientRentIcon,
+    gitHubLink : "https://github.com/balodimgithub/Apartment-rent-landingPage",
+    userInterface : "https://quotient-rent.netlify.app/",
+    tools: ["HTML", , "javascript", "CSS", "netlify",],
+    problem:
+      "A Landing Page on Real estate home and accomodation matters and issues",
+  },
+   {
+    name: "CHATGPT Instance",
+    image: ChatGPTRent,
+    gitHubLink : "https://github.com/balodimgithub/ChatGpt-instance",
+    userInterface : "https://chat-gpt-instance.netlify.app/",
+    tools: ["HTML" , "javascript", "CSS", "netlify"],
+    problem:
+      "A mild replication of the ChatGpt landing page",
   },
   {
     name: "Onye ji cashie",
@@ -188,10 +210,17 @@ export default function Profile() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className=" p-6">
+                  <div className="flex items-center">
                   <h3 className="text-xl font-semibold mb-3 text-green-400">
                     {project.name}
+                    {project.gitHubLink?.length < 2 &&(
+                   <p className="text-xl font-semibold mb-3 text-green-400" >
+                    (Code and UI are Confidential)
+                   </p>
+                    )}
                   </h3>
+                  </div>
 
                   <p className="text-gray-400 text-sm leading-relaxed mb-5">
                     {project.problem}
@@ -206,12 +235,13 @@ export default function Profile() {
                         {tool}
                       </span>
                     ))}
-                 
+                 {project?.gitHubLink?.length > 1 && (
                   <a href={project.gitHubLink}>
                       <Image src={GitIcon}   className={"text-xs px-3 py-1 rounded-full border border-green-400/30 text-green-300"}
                       width={50} height={50}  alt="Code Icon"
               />
               </a>  
+                 )}
                {project.userInterface?.length > 1 && (
               <a href={project.userInterface} className={"text-xs px-3 flex py-1 align-self justify-self rounded-full border border-green-400/30 text-green-300"}>
                 User Interface
