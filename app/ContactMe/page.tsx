@@ -78,7 +78,7 @@ if (!formRef.current) return;
           <a href="https://x.com/balodim1?s=11" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
             X
           </a>
-          <a href="https://wa.me/09065013817" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
+          <a href="https://wa.me/2349065013817" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition">
             WhatsApp
           </a>
         </m.div>
