@@ -1,6 +1,6 @@
 "use client";
-
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import {useState} from "react";
+import { LazyMotion, domAnimation, m, motion } from "framer-motion";
 import Image from "next/image";
 import DashRefineImage from "../../public/DashRefineImage.jpeg";
 import BrainWave from "../../public/BrainWave.png";
@@ -11,11 +11,20 @@ import  AremxyPlugLogo from "../../public/AremxyPlugLogo.jpeg";
 import GitIcon from "../../public/Git.svg";
 import NFTIcon from "../../public/NFT.jpeg"
 import QoutientRentIcon from "../../public/QuotientRent.jpeg"
-import ChatGPTRent from "../../public/ChatGPTLandingPage.png"
+import ChatGPTRent from "../../public/ChatGPTLandingPage.png";
+import { AnimatePresence } from "framer-motion";
+;
+
 /**
  * Stable Framer Motion setup for Next.js App Router
  * No profile image in hero – text-first positioning
  */
+type certInfoProp = {
+  id : number,
+  platform : string,
+  year : string,
+  thumbnail : string
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -31,6 +40,7 @@ const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.18 } },
 };
+
 
 // Project data (replace images + content as needed)
 const projects = [
@@ -129,9 +139,14 @@ const projects = [
       "Trucking Management",
   }
 ];
-
+const certInformation  = [
+  {id : 1, title : "Professional certificate from Axia Africa", platform :"Axia Africa", year : "2023", thumbnail :"../../CertAxia.jpeg"},
+  {id :2, title : "INTERNSHIP At AREMXYPLUG", platform :"AREMXYPLUG", year : "Aug 2023 - Dec 2023", thumbnail : "../../INTERNSHIP CERTIFICATE - OLADIMEJI.jpg"},
+  {id :3, title : "Help aspiring engineers to learn about web technologies and attain certificates", platform :"SCHOOL PROJECT", year : "2024", thumbnail :"../../Technova.jpeg"},
+  {id :4, title : "Organising, coordinating and teaching aspiring developers the world of engineering", platform :"WEBDEVCONSTRUCT", year : "2024", thumbnail : "../../WebDevConstruct.jpeg"}
+]
 export default function Profile() {
-   
+     const [activeCert, setActiveCert] = useState(false)
   return (
     <LazyMotion features={domAnimation}>
       <main className="relative min-h-screen bg-black text-gray-100 overflow-hidden">
@@ -164,6 +179,73 @@ export default function Profile() {
             Windsurf and GitHub Copilot, while maintaining a forward-looking vision
             in machine learning shaped through continuous reading and learning.
           </m.p>
+        </section>
+        <section className="relative z-10 max-w-7xl mx-auto px-6 pb-32">
+           <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Certificates and voluntary activities
+            </h2>
+            <p className="text-gray-400 max-w-2xl mb-16">
+               Moving from the grounds of thorough and intense learning to a space with teams which challenged me to up-scale
+               not only my skills but my adaptability and understanding of syncing system design and architecture with organisation plans
+               and feature-based systems aimed for profitability.
+                </p>
+          </motion.div>
+          <div className="flex flex-wrap RecentPost   gap-4">
+          {certInformation?.map((cert, index)=> ( 
+          <motion.div key={index}
+  layoutId={`cert-${cert.id}`}
+  whileHover={{ y: -6 }}
+  className="group w-150 h-100 h- cursor-pointer rounded-lg border border-green-500/20 bg-[#121212] overflow-hidden"
+  //onClick={() => setActiveCert(true)}
+>
+  <div className="relative aspect-16/11 overflow-hidden">
+    <motion.img
+      src={cert.thumbnail}
+      alt={cert.title}
+      className="h-full w-full"
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.4 }}
+    />
+  </div>
+
+  <div className="p-4">
+    <h3 className="text-white font-medium">{cert.title}</h3>
+    <p className="text-sm text-gray-400">
+      {cert.platform} · {cert.year}
+    </p>
+  </div>
+  <AnimatePresence>
+  {activeCert && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setActiveCert(false)}
+    >
+      <Image
+     //   layoutId={`cert-${cert.id * 4}`}
+     width ={300} height={200}
+        src={cert.thumbnail}
+        alt={cert.title}
+        className="max-h-[90vh] max-w-[90vw] rounded-lg"
+        onClick={(e) => e.stopPropagation()}
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
+</motion.div>
+
+
+          ))}
+          </div>
+
         </section>
 
         {/* PROJECTS SECTION */}

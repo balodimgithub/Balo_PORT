@@ -42,7 +42,7 @@ export default function HomePage() {
 
             <m.div variants={fadeUp} initial="hidden" animate="show" className="flex gap-4">
               <a href="/Profile" className="px-6 py-3 rounded-full bg-green-400 text-black font-medium hover:bg-green-300 transition">
-                View Projects
+                Work
               </a>
               <a href="/ContactMe" className="px-6 py-3 rounded-full border border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition">
                 Contact Me
