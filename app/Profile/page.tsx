@@ -44,7 +44,15 @@ const stagger = {
 
 // Project data (replace images + content as needed)
 const projects = [
-  
+    {
+    name: "AremxyPlug Customer Dashboard",
+    image: AremxyPlugLogo,
+    gitHubLink : "/",
+    userInterface : "https://aremxyplug.com",
+    tools: ["React" , "Javascript","Node.js", "eslint", "REST API","Managing third party service", "Dependencies"],
+    problem:
+      "I managed a team to help build a digital and Telecommunication solutions for users",
+  },
 
     {
     name: "Dashboard_with_Refine",
@@ -93,15 +101,7 @@ const projects = [
     problem:
       "Market for Producers and clients",
   },
-   {
-    name: "AremxyPlug Customer Dashboard",
-    image: AremxyPlugLogo,
-    gitHubLink : "/",
-    userInterface : "/",
-    tools: ["React" , "Javascript","Node.js", "eslint", "REST API","Managing third party service", "Dependencies"],
-    problem:
-      "I managed a team to help build a digital and Telecommunication solutions for users",
-  },
+ 
     {
     name: "AremxyPlug Admin Dashboard",
     image: AremxyPlugLogo,
@@ -139,6 +139,9 @@ const projects = [
       "Trucking Management",
   }
 ];
+
+
+
 const certInformation  = [
   {id : 1, title : "Professional certificate from Axia Africa", platform :"Axia Africa", year : "2023", thumbnail :"../../CertAxia.jpeg"},
   {id :2, title : "INTERNSHIP At AREMXYPLUG", platform :"AREMXYPLUG", year : "Aug 2023 - Dec 2023", thumbnail : "../../INTERNSHIP CERTIFICATE - OLADIMEJI.jpg"},
@@ -248,6 +251,22 @@ export default function Profile() {
 
         </section>
 
+
+   {/* Making an Impact */}
+<div className ="w-full flex flex-col gap-10 my-10 justify-center items-center px-3">
+     <div className="flex flex-col items-center gap-2 w-full font-sans">
+  <h1 className="text-[46px] text-center text-green-400  font-bold">Making an Impact </h1>
+  <p className="text-2xl font-semibold text-center text-white">Contribution for the Past Twelve Months, 
+    making sure the software in AremxyPlug maintain the production standard</p>
+    </div>
+  <div className="w-full justify-center flex px-3"> 
+  <Image src={"/TwelveMonthsContribution.png"} 
+    width={500} height={300} alt={"Contribution"}/>
+  </div>
+
+</div>
+
+
         {/* PROJECTS SECTION */}
         <section className="relative z-10 max-w-7xl mx-auto px-6 pb-32">
           <m.div
@@ -272,6 +291,10 @@ export default function Profile() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
           >
+
+
+         
+
             {projects.map((project) => (
               <m.article 
                 key={project.name}
@@ -296,7 +319,7 @@ export default function Profile() {
                   <div className="flex items-center">
                   <h3 className="text-xl font-semibold mb-3 text-green-400">
                     {project.name}
-                    {project.gitHubLink?.length < 2 &&(
+                    {(project.gitHubLink?.length < 2 && project.userInterface?.length < 2) && (
                    <p className="text-xl font-semibold mb-3 text-green-400" >
                     (Code and UI are Confidential)
                    </p>
