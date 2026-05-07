@@ -37,7 +37,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-gray-400 max-w-xl mb-10">
-              I’m Oladimeji, a software engineer focused on crafting high-performance, visually refined applications. My passion is blending engineering precision with design intuition to create products recruiters remember.
+              I’m Oladimeji, a software engineer focused on crafting high-performance, visually refined applications. My passion is blending engineering precision with design intuition to create products users remember.
             </p>
 
             <m.div variants={fadeUp} initial="hidden" animate="show" className="flex gap-4">
