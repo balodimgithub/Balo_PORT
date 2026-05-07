@@ -193,7 +193,7 @@ export default function Profile() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Certificates and voluntary activities
             </h2>
-            <p className="text-gray-400 max-w-2xl mb-16">
+            <p className={"text-gray-400 max-w-2xl mb-16"}>
                Moving from the grounds of thorough and intense learning to a space with teams which challenged me to up-scale
                not only my skills but my adaptability and understanding of syncing system design and architecture with organisation plans
                and feature-based systems aimed for profitability.
@@ -219,7 +219,7 @@ export default function Profile() {
 
   <div className="p-4">
     <h3 className="text-white font-medium">{cert.title}</h3>
-    <p className="text-sm text-gray-400">
+    <p className={"text-sm text-gray-400"}>
       {cert.platform} · {cert.year}
     </p>
   </div>
@@ -253,17 +253,38 @@ export default function Profile() {
 
 
    {/* Making an Impact */}
-<div className ="w-full flex flex-col gap-10 my-10 justify-center items-center px-3">
-     <div className="flex flex-col items-center gap-2 w-full font-sans">
-  <h1 className="text-[46px] text-center text-green-400  font-bold">Making an Impact </h1>
-  <p className="text-2xl font-semibold text-center text-white">Contribution for the Past Twelve Months, 
-    making sure the software in AremxyPlug maintain the production standard</p>
+<div className ="w-full flex flex-col gap-20  my-10 justify-center items-center px-5 md:px-10">
+  <h1 className={"text-[46px] text-center text-green-400  font-bold"}>Making an Impact </h1>
+  <div className="flex flex-col md:flex-row md:gap-10 gap-5">
+     <div className="flex flex-col w-full md:flex-row md:w-1/2 items-center gap-2  font-sans">
+    
+  <p className={"text-2xl font-semibold md:text-left text-centertext-white"}>Commits for the Past Twelve Months, 
+    making sure the software in AremxyPlug maintain the production standard.</p>
     </div>
-  <div className="w-full justify-center flex px-3"> 
+  <div className="w-full justify-center flex px-3 md:w-1/2"> 
   <Image src={"/TwelveMonthsContribution.png"} 
-    width={500} height={300} alt={"Contribution"}/>
+    width={800} height={300} alt={"Contribution"}/>
   </div>
-
+</div>
+{/* Activity */}
+  <div className="flex flex-col w-full md:flex-row-reverse
+  items-center gap-2  font-sans">
+     
+  <p className={"text-2xl md:w-1/2 w-full  font-semibold text-center text-white"}>
+   Visual Representation of the Work done monthly.</p>
+  
+  <div className="w-full justify-center flex px-3 md:w-1/2"> 
+  <Image src={"/YearContribution.png"} 
+    width={800} height={600} alt={"Contribution"}/>
+</div>
+  </div>
+  {/* Button container */}
+   <div className="w-full justify-center flex px-3">
+  <a href="https://github.com/balodimgithub" 
+  className={"py-4 w-full font-semibold md:w-44.75 px-6 bg-green-400 hover:opacity-90 text-center text-black rounded-lg hover:bg-green-500 transition"}>
+    GitHub Profile
+  </a>
+  </div>
 </div>
 
 
