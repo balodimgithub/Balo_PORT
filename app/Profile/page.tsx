@@ -61,7 +61,7 @@ const projects = [
     userInterface : "https://finsa-unilag.com",
     tools: ["React", "Typescript", "Next.js", "eslint", "Directus Admin Backend","Render", "NameCheap", "CronJob", "Railway"],
     problem:
-    `Building a dynamic media website for the Finance Student Association of the University of Lagos, Nigeria, 
+    `Built a dynamic media website for the Finance Student Association of the University of Lagos, Nigeria, 
       to help students and members of the association access information about events, news, and other resources related to finance and business.`,
   },
 
