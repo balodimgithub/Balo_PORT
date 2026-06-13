@@ -12,6 +12,7 @@ import GitIcon from "../../public/Git.svg";
 import NFTIcon from "../../public/NFT.jpeg"
 import QoutientRentIcon from "../../public/QuotientRent.jpeg"
 import ChatGPTRent from "../../public/ChatGPTLandingPage.png";
+import FinsaWebsite from "../../public/FinsaWebsitePic.png"
 import { AnimatePresence } from "framer-motion";
 ;
 
@@ -52,6 +53,16 @@ const projects = [
     tools: ["React" , "Javascript","Node.js", "eslint", "REST API","Managing third party service", "Dependencies"],
     problem:
       "I managed a team to help build a digital and Telecommunication solutions for users",
+  },
+   {
+    name: "Official Finance Student Association | Unilag Website",
+    image: FinsaWebsite,
+    gitHubLink : "https://github.com/FINSA-TECH-ORG/FINSA-FRONTEND",
+    userInterface : "https://finsa-unilag.com",
+    tools: ["React", "Typescript", "Next.js", "eslint", "Directus Admin Backend","Render", "NameCheap", "CronJob", "Railway"],
+    problem:
+    `Building a dynamic media website for the Finance Student Association of the University of Lagos, Nigeria, 
+      to help students and members of the association access information about events, news, and other resources related to finance and business.`,
   },
 
     {
